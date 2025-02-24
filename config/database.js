@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
+const dbgr = require("debug")("development:mongoose")
 
 const initializeDatabase = async () => {
   try {
     const connection = await mongoose.connect(process.env.MONGO_URL);
     if (connection) {
-      console.log('Connected successfully to database');
+      dbgr('Connected successfully to database');
     }
   } catch (error) {
-    console.log('Connection to database failed', error);
+    dbgr('Connection to database failed', error);
   }
 }
 
